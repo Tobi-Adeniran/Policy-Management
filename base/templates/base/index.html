@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+    <title>Document</title>
+    <style>
+        ul {
+            list-style-type: none;
+            overflow: hidden;
+        }
+        
+        li {
+            float: right;
+        }
+        
+        li a {
+            color: #000;
+            display: block;
+            text-align: center;
+            padding: 10px 10px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        li a:hover {
+            text-decoration: underline;
+        }
+        
+        .grid {
+            height: 23px;
+            position: relative;
+            bottom: 4px;
+        }
+        
+        .signbutton {
+            background-color: #4885ed;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            padding: 7px 10px;
+            position: relative;
+            bottom: 7px;
+            font-weight: bold;
+        }
+        
+        .logo {
+            margin-top: 100px;
+            margin-bottom: 20px;
+        }
+        
+        .bar {
+            margin: 0 auto;
+            width: 575px;
+            border-radius: 30px;
+            border: 1px solid #dcdcdc;
+        }
+        
+        .bar:hover {
+            box-shadow: 1px 1px 8px 1px #dcdcdc;
+        }
+        
+        .bar:focus-within {
+            box-shadow: 1px 1px 8px 1px #dcdcdc;
+            outline: none;
+        }
+        
+        .searchbar {
+            height: 45px;
+            border: none;
+            width: 500px;
+            font-size: 16px;
+            outline: none;
+        }
+        
+        .voice {
+            height: 20px;
+            position: relative;
+            top: 5px;
+            left: 10px;
+        }
+        
+        .buttons {
+            margin-top: 30px;
+        }
+        
+        .button {
+            background-color: #f5f5f5;
+            border: none;
+            color: #707070;
+            font-size: 15px;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 4px;
+            outline: none;
+        }
+        
+        .button:hover {
+            border: 1px solid #c8c8c8;
+            padding: 9px 19px;
+            color: #808080;
+        }
+        
+        .button:focus {
+            border: 1px solid #4885ed;
+            padding: 9px 19px;
+        }
+        
+        #btn {
+            border: none;
+            padding: 0px;
+            font-size: 23px;
+            background: none;
+            color: rgba(20, 18, 18, 0.877);
+        }
+    </style>
+</head>
+
+<body>
+    {% include 'base/base.html' %}{% block content %} {% load static %}
+    <center>
+        <div class="logo">
+            <img src="{% static 'images/nsp-logo.png' %}" alt="">
+        </div>
+        <div class="bar" style="margin-top: 80px;">
+            <form action="{% url 'searchbar' %}" method="get">
+                <input class="searchbar" type="text" name="search-area">
+                <button id="btn" type="submit" class="fa fa-search"></button>
+            </form>
+
+            <!-- <form action="" method="get">
+                    <input class="searchbar" type="text" name="search-area" value="{{search_input }}">
+                    <input type="submit" value="Search">
+            </form> -->
+
+        </div>
+
+        <div class="buttons">
+            {% if request.user.is_authenticated %}
+            <!-- <a href="#"><button class="button" type="button">Search Departments</button></a> -->
+            {% else %}
+            <a href="#"><button class="button" type="button">login</button></a>{% endif %}
+        </div>
+
+
+
+    </center>
+
+    {% endblock content %}{% include 'base/footer.html' %}
+</body>
+
+</html>

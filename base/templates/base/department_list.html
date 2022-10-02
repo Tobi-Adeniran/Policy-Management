@@ -1,0 +1,20 @@
+{% include 'base/base.html' %}{% block content %}
+
+<center>
+    <div style="text-align: center; margin-top: 50px;">
+        <h1>All Departments</h1>
+        <ul style="margin-top: 100px;">
+            {% for deptt in departments %}
+
+            <p>{{ deptt.department }} -
+                <i><a href="{% url 'policy' deptt.id %}">View</a></i>
+            </p> {% empty %}
+            <p>
+                <p>nothing to show here</p>
+            </p>
+            {% endfor %}
+        </ul>
+    </div>
+</center>
+
+{% endblock content %}{% include 'base/footer.html' %}

@@ -1,0 +1,14 @@
+{% include 'base/base.html' %}{% block content %} {% load static %}
+<center style="margin-top: 70px;">
+    {% if department %}
+    <h2><i>Search Results Found</i></h2>
+    <hr>
+    <div id="dept">
+        {% for dept in department %}
+        <p>{{dept.department}} - <i><a href="{% url 'policy' dept.id %}">View</a></i></p>
+        {% endfor %} {% else %}
+        <p>No Such Department</p>
+    </div>
+    {%endif%}
+</center>
+{% endblock content %}{% include 'base/footer.html' %}
